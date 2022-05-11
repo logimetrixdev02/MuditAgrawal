@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
         /*************** Users *****************/
         Route::group(['prefix' => 'users'], function(){
             Route::get('reset_pass/{id}', 'UserController@reset_pass')->name('users.reset_pass');
+            
         });
 
         /*************** TimeTables *****************/
