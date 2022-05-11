@@ -7,6 +7,22 @@
             <h6 class="card-title">Manage Users</h6>
             {!! Qs::getPanelOptions() !!}
         </div>
+        <div class="container">
+            <div class="card bg-light mt-3">
+                <div class="card-header">
+                    Laravel 8 Import Export Excel to database Example - ItSolutionStuff.com
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('users-excel-upload') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="file" class="form-control">
+                        <br>
+                        <button class="btn btn-success">Import User Data</button>
+                        <a class="btn btn-warning" href="{{ route('users-excel-upload') }}">Export User Data</a>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <div class="card-body">
             <ul class="nav nav-tabs nav-tabs-highlight">

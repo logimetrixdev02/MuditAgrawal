@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class UserController extends Controller
@@ -195,6 +197,14 @@ class UserController extends Controller
     {
         $subjects = $this->my_class->findSubjectByTeacher($user->id);
         return ($subjects->count() > 0) ? true : false;
+    }
+
+    public function excelUserUpload()
+    {
+        $k=Excel::import(new UsersImport,request()->file('file'));
+        dd($k);
+             
+        return back();
     }
 
 }

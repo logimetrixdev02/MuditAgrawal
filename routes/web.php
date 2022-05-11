@@ -137,6 +137,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::resource('students', 'StudentRecordController');
         Route::resource('users', 'UserController');
+        Route::post('users-excel-upload', 'UserController@excelUserUpload') ->name('users-excel-upload');
         Route::resource('classes', 'MyClassController');
         Route::resource('sections', 'SectionController');
         Route::resource('subjects', 'SubjectController');
