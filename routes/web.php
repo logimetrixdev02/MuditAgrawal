@@ -2,9 +2,10 @@
 
 Auth::routes();
 
-//Route::get('/test', 'TestController@index')->name('test');
+Route::get('/test', 'TestController@index');
 Route::get('/privacy-policy', 'HomeController@privacy_policy')->name('privacy_policy');
 Route::get('/terms-of-use', 'HomeController@terms_of_use')->name('terms_of_use');
+Route::get('/psrs', 'PsrController@index')->name('psrs');
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -12,6 +13,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@dashboard')->name('home');
     Route::get('/home', 'HomeController@dashboard')->name('home');
     Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+    // Route::get('/psrs', 'PsrController@index')->name('psrs');
 
     Route::group(['prefix' => 'my_account'], function() {
         Route::get('/', 'MyAccountController@edit_profile')->name('my_account');
@@ -137,7 +139,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::resource('students', 'StudentRecordController');
         Route::resource('users', 'UserController');
+      
         Route::post('users-excel-upload', 'UserController@excelUserUpload') ->name('users-excel-upload');
+       
         Route::resource('classes', 'MyClassController');
         Route::resource('sections', 'SectionController');
         Route::resource('subjects', 'SubjectController');
@@ -154,8 +158,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('get_class_sections/{class_id}', 'AjaxController@get_class_sections')->name('get_class_sections');
         Route::get('get_class_subjects/{class_id}', 'AjaxController@get_class_subjects')->name('get_class_subjects');
     });
+    // Route::group(['prefix' => 'psrs'], function() {
+    //     // Route::resource('psr', 'PsrController');
+    //     Route::get('psrs', 'PsrController@index')->name('psrs');
+       
+    // });
 
 });
+
 
 /************************ SUPER ADMIN ****************************/
 Route::group(['namespace' => 'SuperAdmin','middleware' => 'super_admin', 'prefix' => 'super_admin'], function(){

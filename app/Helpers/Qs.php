@@ -139,7 +139,22 @@ class Qs
     {
         return in_array(Auth::user()->user_type, self::getTeamAdministrative());
     }
+    public function transformDate($value, $format = 'Y-m-d')
+    {
+        try {
+            return \Carbon\Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value));
+        } catch (\ErrorException $e) {
+            return \Carbon\Carbon::createFromFormat($format, $value);
+        }
+    }
 
+    function formateExcelDate($excel_date){
+        $unix_date = ($excel_date - 25569) * 86400;
+        $excel_date = 25569 + ($unix_date / 86400);
+        $unix_date = ($excel_date - 25569) * 86400;  	
+        return gmdate("Y-m-d", $unix_date);
+        
+    }
     public static function userIsAdmin()
     {
         return Auth::user()->user_type == 'admin';

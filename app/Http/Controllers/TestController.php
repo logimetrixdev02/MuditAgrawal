@@ -13,7 +13,7 @@ class TestController extends Controller
 
     public function index()
     {
-
+        echo "thsi si index function ";
     }
 
 }

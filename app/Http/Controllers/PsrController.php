@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\SupportTeam;
+// namespace App\Http\Controllers\SupportTeam;
+namespace App\Http\Controllers;
+
 
 use App\Helpers\Qs;
 use App\Http\Requests\UserRequest;
@@ -17,7 +19,7 @@ use Maatwebsite\Excel\Facades\Excel;
 // use App\Http\Controllers\SupportTeam\Author;
 
 use DB;
-class UserController extends Controller
+class PsrController extends Controller
 {
     protected $user, $loc, $my_class;
 
@@ -57,7 +59,7 @@ class UserController extends Controller
         $d['psrreport'] = DB::table('psr_sale_report')
         ->paginate(25);
         // dd($d['psrreport']);
-        return view('pages.support_team.users.index', $d);
+        return view('pages.support_team.psrs.index', $d);
 
     }
 

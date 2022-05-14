@@ -47,14 +47,17 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="{{ route('psrs') }}" class="nav-link {{ (Route::is('psrs')) ? 'active' : '' }}">
+                        <i class="icon-home4"></i>
+                        <span>Psr  Upload Excel</span>
+                    </a>
+                </li>
                
                 
 
                
-    <li class="nav-item">
-                        <a href="{{ route('users.index') }}" class="nav-link {{ in_array(Route::currentRouteName(), ['users.index', 'users.show', 'users.edit']) ? 'active' : '' }}"><i class="icon-users4"></i> <span> Upload Excel</span></a>
-                    </li>
+  
 
                 
                     <li class="nav-item">
